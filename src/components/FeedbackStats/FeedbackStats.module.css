@@ -1,0 +1,12 @@
+.stats{
+    display:flex;
+    flex-direction: column;
+    gap: 15px;
+    font-size: medium;
+    list-style-type: none;
+}
+
+.stats__positive{
+    margin-top: 15px;
+    font-size: 18px;
+}

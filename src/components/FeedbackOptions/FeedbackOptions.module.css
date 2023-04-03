@@ -1,0 +1,39 @@
+.section__box {
+  margin-top: 15px;
+  display: flex;
+  gap: 25px;
+  background-image: url('/src/images/opposites-3808487_1920.jpg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  background-blend-mode: darken;
+  width: 400px;
+  height: 200px;
+  justify-content: center;
+  align-items: center;
+  margin-left: -45px;
+}
+
+.section__button-good,
+.section__button-neutral,
+.section__button-bad {
+  width: 100px;
+  height: 40px;
+  background-color: rgb(206, 186, 32);
+  border: none;
+  cursor: pointer;
+  font-weight: 400;
+  color: rgb(0, 0, 0);
+  font-size: 18px;
+  border-radius: 2%;
+  border-bottom: 2px rgba(0, 0, 0, 0.214) solid;
+  border-right: 2px rgba(0, 0, 0, 0.256) solid;
+}
+
+.section__button-good {
+  background-color: rgb(31, 187, 96);
+}
+
+.section__button-bad {
+  background-color: rgb(205, 33, 33);
+}
