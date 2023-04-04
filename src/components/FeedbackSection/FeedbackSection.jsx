@@ -2,9 +2,7 @@ import React, { Component } from "react";
 import PropTypes from 'prop-types';
 import css from './FeedbackSection.module.css'
 
-class FeedbackSection extends Component {
-    render() {
-        const { title, children } = this.props;
+const FeedbackSection = ({ title, children }) => {
         return (
             <div className={css['section']}>
                 <h2 className={css['section__title']}>{title}</h2>
@@ -12,7 +10,6 @@ class FeedbackSection extends Component {
             </div>
         )
     }
-}
 
 FeedbackSection.propTypes = {
     title: PropTypes.string.isRequired,

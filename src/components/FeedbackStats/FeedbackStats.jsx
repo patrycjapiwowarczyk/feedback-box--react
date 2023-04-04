@@ -2,9 +2,7 @@ import React, { Component } from "react";
 import PropTypes from 'prop-types';
 import css from './FeedbackStats.module.css'
 
-class FeedbackStats extends Component {
-    render () {
-        const { good, neutral, bad, totalFeedback, positiveFeedback } = this.props;
+const FeedbackStats = ({ good, neutral, bad, totalFeedback, positiveFeedback }) => {
     return (
         <ul className={css['stats']}>
             <li><b>Good:</b> {good}</li>
@@ -15,7 +13,7 @@ class FeedbackStats extends Component {
         </ul>
     )
     }
-}
+
 
 FeedbackStats.propTypes = {
     good: PropTypes.number.isRequired,

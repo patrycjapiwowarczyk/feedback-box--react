@@ -1,66 +1,60 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import FeedbackSection from './FeedbackSection/FeedbackSection';
 import FeedbackOptions from './FeedbackOptions/FeedbackOptions';
 import FeedbackStats from './FeedbackStats/FeedbackStats';
 import Notification from './Notification/Notification';
 import css from './App.module.css';
 
-class App extends Component {
-  state = {
-    good: 0,
-    neutral: 0,
-    bad: 0,
-  };
+const App = () => {
+  const [feedback, setFeedback] = useState({ good: 0, neutral: 0, bad: 0 });
 
-  handleFeedback = feedback => {
-    this.setState(prevState => ({
-      [feedback]: prevState[feedback] + 1,
+  const handleFeedback = option => {
+    setFeedback(prevState => ({
+      ...prevState,
+      [option]: prevState[option] + 1,
     }));
   };
 
-  handleTotalFeedback = () => {
-    const { good, neutral, bad } = this.state;
+  const handleTotalFeedback = feedback => {
+    const { good, neutral, bad } = feedback;
     return good + neutral + bad;
   };
 
-  handlePositiveFeedback = () => {
-    const totalFeedback = this.handleTotalFeedback();
-    const { good } = this.state;
+  const handlePositiveFeedback = () => {
+    const totalFeedback = handleTotalFeedback();
+    const { good } = feedback;
     if (totalFeedback === 0) {
       return 0;
     }
     return Math.round((good / totalFeedback) * 100);
   };
 
-  render() {
-    const { good, neutral, bad } = this.state;
-    const totalFeedback = this.handleTotalFeedback();
-    const positiveFeedback = this.handlePositiveFeedback();
+  const totalFeedback = handleTotalFeedback();
+  const positiveFeedback = handlePositiveFeedback();
 
-    return (
-      <div className={css['section__container']}>
-        <FeedbackSection title="Give feedback">
-          <FeedbackOptions
-            options={{ good, neutral, bad }}
-            onLeaveFeedback={this.handleFeedback}
+  return (
+    <div className={css['section__container']}>
+      <FeedbackSection title="Give feedback">
+        <FeedbackOptions
+          options={feedback}
+          onLeaveFeedback={handleFeedback(feedback)}
+        />
+      </FeedbackSection>
+      <FeedbackSection title="Statistics">
+        {totalFeedback === 0 ? (
+          <Notification message="There is no feedback yet." />
+        ) : (
+          <FeedbackStats
+            good={feedback.good}
+            neutral={feedback.neutral}
+            bad={feedback.bad}
+            totalFeedback={totalFeedback}
+            positiveFeedback={positiveFeedback}
           />
-        </FeedbackSection>
-        <FeedbackSection title="Statistics">
-          {totalFeedback === 0 ? (
-            <Notification message="There is no feedback yet." />
-          ) : (
-            <FeedbackStats
-              good={good}
-              neutral={neutral}
-              bad={bad}
-              totalFeedback={totalFeedback}
-              positiveFeedback={positiveFeedback}
-            />
-          )}
-        </FeedbackSection>
-      </div>
-    );
-  }
-}
+        )}
+      </FeedbackSection>
+    </div>
+  );
+};
 
 export default App;
