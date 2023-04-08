@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import css from './FeedbackOptions.module.css';
 
-const FeedbackOptions = feedbackOptionsData => {
-  const { options, onLeaveFeedback } = feedbackOptionsData;
+const FeedbackOptions = ({ options, onLeaveFeedback }) => {
   return (
     <div className={css['section__box']}>
       {Object.keys(options).map(option => (

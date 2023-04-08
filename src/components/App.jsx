@@ -15,7 +15,7 @@ const App = () => {
     }));
   };
 
-  const handleTotalFeedback = feedback => {
+  const handleTotalFeedback = () => {
     const { good, neutral, bad } = feedback;
     return good + neutral + bad;
   };
@@ -35,10 +35,7 @@ const App = () => {
   return (
     <div className={css['section__container']}>
       <FeedbackSection title="Give feedback">
-        <FeedbackOptions
-          options={feedback}
-          onLeaveFeedback={handleFeedback(feedback)}
-        />
+        <FeedbackOptions options={feedback} onLeaveFeedback={handleFeedback} />
       </FeedbackSection>
       <FeedbackSection title="Statistics">
         {totalFeedback === 0 ? (
