@@ -1,1 +1,1 @@
-https://patrycjapiwowarczyk.github.io/feedback-box--react/
+https://patrycjapiwowarczyk.github.io/feedback-box--react-hooks/
