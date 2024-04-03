@@ -1,1 +1,1 @@
-https://patrycjapiwowarczyk.github.io/goit-react-hw-04-feedback/
+https://patrycjapiwowarczyk.github.io/feedback-box--react/
